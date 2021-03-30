@@ -70,8 +70,6 @@ android {
             keyPassword = keystoreAliasPassword
             val keystoreAlias: String? by project
             keyAlias = keystoreAlias
-            isV1SigningEnabled = true
-            isV2SigningEnabled = true
         }
 
     }
@@ -84,11 +82,11 @@ android {
 
     buildTypes {
         getByName("release") {
-            if (project.hasProperty("icsopenvpnDebugSign")) {
+            signingConfig = if (project.hasProperty("icsopenvpnDebugSign")) {
                 logger.warn("property icsopenvpnDebugSign set, using debug signing for release")
-                signingConfig = android.signingConfigs.getByName("debug")
+                android.signingConfigs.getByName("debug")
             } else {
-                signingConfig = signingConfigs.getByName("release")
+                signingConfigs.getByName("release")
             }
         }
     }
@@ -97,11 +95,11 @@ android {
 
     productFlavors {
         create("ui") {
-            setDimension("implementation")
+            dimension("implementation")
             buildConfigField("boolean", "openvpn3", "true")
         }
         create("skeleton") {
-            setDimension("implementation")
+            dimension("implementation")
             buildConfigField("boolean", "openvpn3", "false")
         }
     }
@@ -163,20 +161,20 @@ dependencies {
     // https://maven.google.com/web/index.html
     // https://developer.android.com/jetpack/androidx/releases/core
     val preferenceVersion = "1.1.1"
-    val coreVersion = "1.2.0"
-    val materialVersion = "1.1.0"
-    val fragment_version = "1.2.4"
+    val coreVersion = "1.3.2"
+    val materialVersion = "1.3.0"
+    val fragment_version = "1.3.2"
 
 
-    implementation("androidx.annotation:annotation:1.1.0")
+    implementation("androidx.annotation:annotation:1.2.0")
     implementation("androidx.core:core:$coreVersion")
 
     // Is there a nicer way to do this?
-    dependencies.add("uiImplementation", "androidx.constraintlayout:constraintlayout:1.1.3")
-    dependencies.add("uiImplementation", "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72")
+    dependencies.add("uiImplementation", "androidx.constraintlayout:constraintlayout:2.0.4")
+    dependencies.add("uiImplementation", "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.31")
     dependencies.add("uiImplementation", "androidx.cardview:cardview:1.0.0")
-    dependencies.add("uiImplementation", "androidx.recyclerview:recyclerview:1.0.0")
-    dependencies.add("uiImplementation", "androidx.appcompat:appcompat:1.1.0")
+    dependencies.add("uiImplementation", "androidx.recyclerview:recyclerview:1.1.0")
+    dependencies.add("uiImplementation", "androidx.appcompat:appcompat:1.2.0")
     dependencies.add("uiImplementation", "com.github.PhilJay:MPAndroidChart:v3.1.0")
     dependencies.add("uiImplementation", "com.squareup.okhttp3:okhttp:3.2.0")
     dependencies.add("uiImplementation", "androidx.core:core:$coreVersion")
@@ -186,11 +184,11 @@ dependencies {
     dependencies.add("uiImplementation", "androidx.preference:preference:$preferenceVersion")
     dependencies.add("uiImplementation", "androidx.preference:preference-ktx:$preferenceVersion")
     dependencies.add("uiImplementation", "com.google.android.material:material:$materialVersion")
-    dependencies.add("uiImplementation", "androidx.webkit:webkit:1.2.0")
+    dependencies.add("uiImplementation", "androidx.webkit:webkit:1.4.0")
 
-    testImplementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72")
-    testImplementation("junit:junit:4.13")
+    testImplementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.31")
+    testImplementation("junit:junit:4.13.2")
     testImplementation("org.mockito:mockito-core:3.3.3")
-    testImplementation("org.robolectric:robolectric:4.3.1")
-    testImplementation("androidx.test:core:1.2.0")
+    testImplementation("org.robolectric:robolectric:4.5.1")
+    testImplementation("androidx.test:core:1.3.0")
 }
