@@ -28,4 +28,5 @@ main/.cxx
 polaris.yml
 .coverity
 idir
-
+*.log
+*.hprof
