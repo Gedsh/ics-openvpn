@@ -10,13 +10,13 @@ ext {
 }
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 30
 
 
     defaultConfig {
         applicationId "de.blinkt.externalcertprovider"
         minSdkVersion 16
-        targetSdkVersion 27
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
@@ -52,5 +52,5 @@ dependencies {
     //'org.bouncycastle:bcpg-jdk15on:' + bouncycastleVersion
     )
 
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13.2'
 }
