@@ -162,7 +162,7 @@ dependencies {
     val preferenceVersion = "1.1.1"
     val coreVersion = "1.3.2"
     val materialVersion = "1.3.0"
-    val fragment_version = "1.3.2"
+    val fragmentVersion = "1.3.2"
 
 
     implementation("androidx.annotation:annotation:1.2.0")
@@ -179,7 +179,7 @@ dependencies {
     dependencies.add("uiImplementation", "androidx.core:core:$coreVersion")
     dependencies.add("uiImplementation", "androidx.core:core-ktx:$coreVersion")
     dependencies.add("uiImplementation", "org.jetbrains.anko:anko-commons:0.10.4")
-    dependencies.add("uiImplementation", "androidx.fragment:fragment-ktx:$fragment_version")
+    dependencies.add("uiImplementation", "androidx.fragment:fragment-ktx:$fragmentVersion")
     dependencies.add("uiImplementation", "androidx.preference:preference:$preferenceVersion")
     dependencies.add("uiImplementation", "androidx.preference:preference-ktx:$preferenceVersion")
     dependencies.add("uiImplementation", "com.google.android.material:material:$materialVersion")
